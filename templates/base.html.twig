@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags("app") }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{{ path("home")}}">Accueil</a>
+                    </li>
+                    <li>
+                        {% if not is_granted("IS_AUTHENTICATED_FULLY") %} <!-- Si le user n'est pas connecté -->
+                        <a href="{{ path("app_login")}}">Mon Espace</a>
+                        {% endif %}
+                    </li>
+                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                    <li>
+                        <span>{{ app.user.email }}</span> <!-- Quand le user est connecté la propriété app permet de récupérer ses données (comme son e-mail ici) -->
+                        <a href="{{ path("app_logout")}}">Déconnexion</a>
+                    </li>
+                    <li>
+                        <a href="">Reservations</a>
+                    </li>
+                    {% endif %}
+
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <li>
+                        <a href="">Listes des formules</a>
+                    </li>
+                    <li>
+                        <a href="">Ajouter des formules</a>
+                    </li>
+                    <li>
+                        <a href="">Liste des clients</a>
+                    </li>
+                    <li>
+                        <a href="">Liste des reservations</a>
+
+                    </li>
+                    {% endif %}
+            </ul>
+        </nav>
+        {% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags("app") }}
+        {% endblock %}
+    </body>
+</html>
