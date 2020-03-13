@@ -11,17 +11,19 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
+            ->add('email') // (clé sql : UNIQ_8D93D649E7927C74)
             // ->add('roles')
             ->add('nom')
             ->add('prenom')
-            ->add('date_naissance')
+            // utilisation de Datetype pour le format affichage de la date
+            ->add('date_naissance', DateType::class, ["widget" => "single_text"])
             ->add('nationalite')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
