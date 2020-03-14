@@ -59,7 +59,7 @@ class ReservationTypeController extends AbstractController
         }
 
         return $this->render('reservation_type/formulaire.html.twig', [
-            compact("voyages"), 'registrationForm' => $form->createView()
+            "voyages" => $voyages, 'registrationForm' => $form->createView()
         ]);
     }
 }

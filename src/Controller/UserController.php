@@ -9,17 +9,67 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class UserController extends AbstractController
 {
-    /**
-     * @Route("/user", name="user")
+    // /**
+    //  * @Route("/user", name="user")
+    //  */
+    // public function index()
+    // {
+    //     return $this->render('user/index.html.twig', [
+    //         'controller_name' => 'UserController',
+    //     ]);
+    // }
+
+     /**
+     * @Route("/admin/userlist", name="userlist")
      */
-    public function index()
+    public function userList(UserRepository $ur)
     {
-        return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
+        $users = $ur->findAll();
+        $taille = count($users); 
+        return $this->render('user/liste.html.twig', [
+            "users" => $users, "taille" => $taille
         ]);
     }
+
+     /**
+     * @Route("/admin/userupdate/{id}", name="user_update")
+     */
+    public function update(UserRepository $ur, Request $rq, EMI $em, int $id)
+    {
+    
+        $userAmodifier = $ur->find($id);
+        if($rq->isMethod("POST")){
+            $userAmodifier->setNom($rq->request->get("nom"));
+            $userAmodifier->setPrenom($rq->request->get("prenom"));
+            $dateNaissance = new \DateTime($rq->request->get("date_naissance"|date("Y/m/d")));
+            $userAmodifier->setDateNaissance($dateNaissance);
+            $userAmodifier->setEmail($rq->request->get("email"));
+            $userAmodifier->setNationalite($rq->request->get("nationalite"));
+            $em->persist($userAmodifier);  // équivalent à la création d'une requête UPDATE
+            $em->flush();            // exécute la (ou les) requête(s) en attente
+            return $this->redirectToRoute("userlist");  // redirection vers la route
+        }
+        return $this->render("user/formulaire.html.twig", [ "user" => $userAmodifier, "mode" => "modifier" ]);
+
+    }
+
+    /**
+     * @Route("/admin/userdelete/{id}", name="user_delete")
+     */
+    public function delete(UserRepository $ur, Request $rq, EMI $em, int $id)
+    {
+        $userAsupprimer = $ur->find($id);
+        if($rq->isMethod("POST")){
+            $em->remove($userAsupprimer);    // équivalent à la création d'une requête DELETE
+            $em->flush();                       // exécute la (ou les) requête(s) en attente
+            return $this->redirectToRoute("userlist");  // redirection vers la route
+        }
+        return $this->render("user/formulaire.html.twig", [ "user" => $userAsupprimer, "mode" => "confirmer" ]);
+    }
+
 
     /**
      * @Route("/registration", name="user_registration")

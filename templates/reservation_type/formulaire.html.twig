@@ -9,17 +9,12 @@
             {{ form_row(registrationForm.date_depart) }}
             {{ form_row(registrationForm.formule) }}
             {{ form_row(registrationForm.prix ) }}
-            {{ form_row(registrationForm.voyage ) }}
-            {# <select>
-                {% for voyage in voyages %}
-                    <option>{{ voyage.destination }}</option>
-                {% endfor %}
-            </select> #}
             
             {# {{ form_row(registrationForm.num_passeport) }}
             {{ form_row(registrationForm.date_expiration_passeport) }} #}
 
-            <button>Valider</button>
+            
         {{ form_end(registrationForm) }}
+        <button class="btn btn-secondary">Valider</button>
     </div>
 {% endblock %}

@@ -42,6 +42,12 @@ class Reservation
      */
     private $prix;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\user", inversedBy="reservations")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +109,18 @@ class Reservation
     public function setPrix(int $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(?user $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
