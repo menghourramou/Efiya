@@ -27,9 +27,9 @@ class UserType extends AbstractType
             ->add('nationalite')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                'constraints' => [ // 'constraints' sert a appliquer des restrictions
+                    new IsTrue([ // Si la case des CGV n'est pas cochée on renvoie le msg :
+                        'message' => 'Vous devez accepter nos conditions générales.',
                     ]),
                 ],
             ])
@@ -38,12 +38,12 @@ class UserType extends AbstractType
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
+                    new NotBlank([ // Si le mdp est vide on renvoie le msg : 
+                        'message' => 'Veuillez saisir un mot de passe',
                     ]),
                     new Length([
-                        'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'min' => 6, // Si le mdp fait moins de 6 caractères on renvoie le msg :
+                        'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),

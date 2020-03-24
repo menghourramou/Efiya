@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<form method="POST">
+        <label>Destination</label><br>
+        <input type="text" name="destination" value="{{ voyage is defined ? voyage.destination : "" }}"><br><br>
+    
+    <button type="submit"> {{ mode is defined ? mode|capitalize : "Ajouter" }}</button>
+    
+</form>
+{% endblock %}
+
+{# formulaire qui permet à l'admin d'ajouter , modifier ou supprimer un voyage #}

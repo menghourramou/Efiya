@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<form method="POST">
+        <label>Voyage</label><br>
+        <input type="text" name="voyage" value="{{ reservation is defined ? reservation.voyage.destination : "" }}"><br><br>
+    
+        <label>Statut</label><br>
+        <input name="statut" value="{{ reservation is defined ? reservation.statut : "" }}"><br><br> 
+
+        <label>Date de départ</label><br>
+        <input type="text" name="date_depart" value="{{reservation is defined ? reservation.dateDepart : "" }}"><br><br>
+
+        <label>Formule</label><br>
+        <input type="text" name="formule" value="{{ reservation is defined ? reservation.formule : "" }}"><br><br>
+    
+        <label>Prix</label><br>
+        <input name="prix" value="{{ reservation is defined ? reservation.prix : "" }}"><br><br> 
+
+    <button type="submit"> {{ mode is defined ? mode|capitalize : "Ajouter" }}</button>
+    
+</form>
+{% endblock %}

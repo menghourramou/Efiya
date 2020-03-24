@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<form method="POST">
+        <label>Formule</label><br>
+        <input type="text" name="formule" value="{{ formule is defined ? formule.formule : "" }}"><br><br>
+    
+        <label>Prix</label><br>
+        <input name="prix" value="{{ formule is defined ? formule.prix : "" }}"><br><br>    
+
+    <button type="submit"> {{ mode is defined ? mode|capitalize : "Ajouter" }}</button>
+    
+</form>
+{% endblock %}
+
+{# formulaire qui permet à l'admin d'ajouter , modifier ou supprimer une formule #}

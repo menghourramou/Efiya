@@ -12,16 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
-    // /**
-    //  * @Route("/user", name="user")
-    //  */
-    // public function index()
-    // {
-    //     return $this->render('user/index.html.twig', [
-    //         'controller_name' => 'UserController',
-    //     ]);
-    // }
 
+    //fonction pour afficher la liste des utilisateurs(disponible pour l'admin)
      /**
      * @Route("/admin/userlist", name="userlist")
      */
@@ -33,7 +25,7 @@ class UserController extends AbstractController
             "users" => $users, "taille" => $taille
         ]);
     }
-
+    //fonction pour que l'admin puisse modifier un utilisateur(sans le mdp car confidentiel)
      /**
      * @Route("/admin/userupdate/{id}", name="user_update")
      */
@@ -55,7 +47,7 @@ class UserController extends AbstractController
         return $this->render("user/formulaire.html.twig", [ "user" => $userAmodifier, "mode" => "modifier" ]);
 
     }
-
+    //fonction pour supprimer un utilisateur(disponible uniquement pour l'admin)
     /**
      * @Route("/admin/userdelete/{id}", name="user_delete")
      */

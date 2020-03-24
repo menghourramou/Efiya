@@ -28,25 +28,26 @@ class Reservation
     private $statut;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $date_depart;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $formule;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $prix;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\user", inversedBy="reservations")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Formules", inversedBy="reservations")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $formule;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date_depart;
 
     public function getId(): ?int
     {
@@ -77,29 +78,6 @@ class Reservation
         return $this;
     }
 
-    public function getDateDepart(): ?string
-    {
-        return $this->date_depart;
-    }
-
-    public function setDateDepart(string $date_depart): self
-    {
-        $this->date_depart = $date_depart;
-
-        return $this;
-    }
-
-    public function getFormule(): ?string
-    {
-        return $this->formule;
-    }
-
-    public function setFormule(string $formule): self
-    {
-        $this->formule = $formule;
-
-        return $this;
-    }
 
     public function getPrix(): ?int
     {
@@ -113,14 +91,38 @@ class Reservation
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getFormule(): ?Formules
+    {
+        return $this->formule;
+    }
+
+    public function setFormule(?Formules $formule): self
+    {
+        $this->formule = $formule;
+
+        return $this;
+    }
+
+    public function getDateDepart(): ?\DateTimeInterface
+    {
+        return $this->date_depart;
+    }
+
+    public function setDateDepart(\DateTimeInterface $date_depart): self
+    {
+        $this->date_depart = $date_depart;
 
         return $this;
     }

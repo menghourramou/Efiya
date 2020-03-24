@@ -14,8 +14,8 @@ class UserFixtures extends BaseFixture
         $this->createMany(10, "admin", function($num){ 
 
             $email = "admin" . $num . "@efiya.com";
-            $mdp = password_hash("admin" . $num, PASSWORD_DEFAULT);
-            $nom = $this->faker->lastName;
+            $mdp = password_hash("admin" . $num, PASSWORD_DEFAULT);//password_hash permet de générer un mdp crypté 
+            $nom = $this->faker->lastName;//faker: permet de générer un "faux" nom(dans ce cas là)
             $prenom = $this->faker->firstName;
             $DateNaissance = $this->faker->dateTime("now");
             

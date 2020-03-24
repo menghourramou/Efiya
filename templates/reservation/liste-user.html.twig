@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Mes reservations {% endblock %}
+
+{% block body %}
+    
+    <table class="table table-bordered">
+        <tr>
+            <th colspan=7 class="text-center">Nombre de reservations : {{ reservations|length }}</th>
+        </tr>
+        <tr>
+            <th>ID</th><th>Voyage</th><th>Statut</th><th>Date de départ</th><th>Formule</th><th>Prix</th>
+        <tr>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.voyage.destination }}</td>
+                <td>{{ reservation.statut }}</td>
+                <td>{{ reservation.dateDepart|date("d/m/Y") }}</td>
+                <td>{{ reservation.formule.formule }}</td>
+                <td>{{ reservation.prix }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ReservationController!{% endblock %}
+{% block title %}Reservation{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Reservation</h1>
+    <div class="container">
+        <form method="POST">
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.date_depart) }}
+            {{ form_row(registrationForm.formule) }}
+            {{ form_row(registrationForm.voyage) }}
+            {{ form_row(registrationForm.prix) }}
+            {{ form_row(registrationForm.num_passeport) }}
+            {{ form_row(registrationForm.date_expiration_passeport) }}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/Efiya/src/Controller/ReservationController.php'|file_link(0) }}">src/Controller/ReservationController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/Efiya/templates/reservation/index.html.twig'|file_link(0) }}">templates/reservation/index.html.twig</a></code></li>
-    </ul>
-</div>
+            <button class="btn btn-secondary">Valider</button>
+        {{ form_end(registrationForm) }}
+        </form>
+    </div>
 {% endblock %}

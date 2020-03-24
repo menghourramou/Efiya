@@ -15,3 +15,15 @@ require('bootstrap');
 // import $ from 'jquery';
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+$("#reservation_formule").change(function(evt){
+        // console.log("change");
+
+        $.ajax({
+            method: "GET",
+            url: "/prix-reservation/" + $(this).val(),
+            success: function(resultat){
+                // console.log("ajax", $("#reservation_prix"));
+                $("#reservation_prix").val(resultat.prix);
+            }
+        })
+    });

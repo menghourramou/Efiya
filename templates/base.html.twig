@@ -1,53 +1,93 @@
-<!DOCTYPE html>
+{# page qu'on extends(etend) aux autres vues (app.scss + app.js + fonts + nav + footer) #}
+<!DOCTYPE html> 
 <html>
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags("app") }}
+            <style>
+                @import url('https://fonts.googleapis.com/css?family=Bad+Script|Satisfy&display=swap');
+                @import url('https://fonts.googleapis.com/css?family=Mukta&display=swap');
+                @import url('https://fonts.googleapis.com/css?family=Itim&display=swap');
+                @import url('https://fonts.googleapis.com/css?family=Satisfy&display=swap');      
+                @import url('https://fonts.googleapis.com/css?family=Parisienne&display=swap');
+                @import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+            </style>
         {% endblock %}
     </head>
-    <body>
-    <nav>
-                <ul>
-                    <li>
-                        <a href="{{ path("home")}}">Accueil</a>
-                    </li>
-                    <li>
-                        {% if not is_granted("IS_AUTHENTICATED_FULLY") %} <!-- Si le user n'est pas connecté -->
-                        <a href="{{ path("app_login")}}">Mon Espace</a>
-                        {% endif %}
-                    </li>
-                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                    <li>
-                        <span>{{ app.user.email }}</span> <!-- Quand le user est connecté la propriété app permet de récupérer ses données (comme son e-mail ici) -->
-                        <a href="{{ path("app_logout")}}">Déconnexion</a>
-                    </li>
-                    <li>
-                        <a href="{{ path("reservation")}}">Reservation</a>
-                    </li>
-                    <li>
-                        <a href="">Mes Reservations</a>
-                    </li>
-                    {% endif %}
 
-                    {% if is_granted("ROLE_ADMIN") %}
-                    <li>
-                        <a href="">Listes des formules</a>
-                    </li>
-                    <li>
-                        <a href="{{ path("userlist")}}">Liste des clients</a>
-                    </li>
-                    <li>
-                        <a href="">Liste des reservations</a>
+    <body class="container-fluid">
+        <nav>
+            <a href="{{ path("home")}}" class="icon-link"> 
+               <img src="{{ dossier_images }}/logo/logo.png" class="logo" alt="logo">
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ path("home")}}">Accueil</a>
+                </li>
+                {% if not is_granted("IS_AUTHENTICATED_FULLY") %} <!-- Si le user n'est pas connecté -->
+                <li>
+                    <a href="{{ path("app_login")}}">Mon Espace</a>
+                </li>
+                {% endif %}
+                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                <li>
+                    <a href="{{ path("app_logout")}}">Déconnexion</a>
+                </li>
+                <li>
+                    <a href="{{ path("reservation")}}">Reservation</a>
+                </li>
+                <li>
+                    <a href="{{path("reservationlistuser")}}">Mes Reservations</a>
+                </li>
+                <li>
+                    <p>Bienvenue {{ app.user.prenom }} !</p><br><!-- Quand le user est connecté la propriété app permet de récupérer ses données (comme son prenom ici) -->
+                </li>
+                {% endif %}
 
-                    </li>
-                    {% endif %}
+                {% if is_granted("ROLE_ADMIN") %}
+                <li>
+                    <a href="{{ path("formulelist")}}">Listes des formules</a>
+                </li>
+                <li>
+                    <a href="{{ path("userlist")}}">Liste des clients</a>
+                </li>
+                <li>
+                    <a href="{{ path("reservationlist")}}">Liste des reservations</a>
+
+                </li>
+                
+                {% endif %}
             </ul>
+              
         </nav>
-        {% block body %}{% endblock %}
+        <div id="corps">
+            {% block body %}{% endblock %}
+        </div>       
+        <footer>
+            <div class="coordones">
+                <span>
+                    <p>Contact : 09.01.01.01.01</p>
+                    <p>E-mail : efiya@voyages.com</p>
+                </span><br>
+                <div class="rs">
+                    <a href="https://fr-fr.facebook.com/"><i class="fab fa-facebook fa-2x" ></i> </a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram fa-2x"></i> </a>
+                    <a href="https://www.youtube.com/"><i class="fab fa-youtube fa-2x"></i> </a>
+                    <a href="https://www.snapchat.com/l/fr-fr/"><i class="fab fa-snapchat-square fa-2x"></i> </a>
+                </div>
+                <div class="cgv"> 
+                    <a href="{{path("cgv")}}">Conditions Générales de Vente</a>
+                </div>
+            </div>
+        <p>&copy; Tous droits reservés à Efiya Voyages.</p>
+        </footer>
         {% block javascripts %}
             {{ encore_entry_script_tags("app") }}
         {% endblock %}
+  
     </body>
+      
+
 </html>

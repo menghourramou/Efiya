@@ -1,20 +1,161 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello VoyageController!{% endblock %}
+{# PAGE D'ACCUEIL #}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<h5>Découvrez</h5>
+<h2>Nos voyages</h2>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/Efiya/src/Controller/VoyageController.php'|file_link(0) }}">src/Controller/VoyageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/Efiya/templates/voyage/index.html.twig'|file_link(0) }}">templates/voyage/index.html.twig</a></code></li>
-    </ul>
+<h4>N'oubliez pas de vous connecter pour faire partie de l'aventure!</h4>
+
+<!--************************************Sahara****************************************************************************************-->
+
+<div id="carroussel">
+    <div class="" id="droit">
+
+        <h2>Sahara</h2>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                    <a href="/sahara" class="icon-link"> 
+                                <img src="{{ dossier_images }}/sahara/sahara-1.jpg" class="sahara" alt="trek sahara">
+                            </a>
+                    </div>
+                    <div class="carousel-item">
+                    <a href="/sahara" class="icon-link"> 
+                                <img src="{{ dossier_images }}/sahara/sahara-2.jpg" class="sahara" alt="trek sahara">
+                            </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="/sahara" class="icon-link"> 
+                                <img src="{{ dossier_images }}/sahara/sahara-3.jpg" class="sahara" alt="trek sahara">
+                            </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="/sahara" class="icon-link"> 
+                                <img src="{{ dossier_images }}/sahara/sahara-4.jpg" class="sahara" alt="trek sahara">
+                            </a>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Précédent</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Suivant</span>
+                </a>
+            </div>
+
+        <!--************************************ Egypte****************************************************************************************-->
+        <h2>Egypte</h2>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <a href="/egypte" class="icon-link"> 
+                            <img src="{{ dossier_images }}/egypte/egypte-1.jpeg" class="egypte" alt="trek egypte">
+                        </a>
+                </div>
+                <div class="carousel-item">
+                <a href="/egypte" class="icon-link"> 
+                            <img src="{{ dossier_images }}/egypte/egypte-2.jpg" class="egypte" alt="trek egypte">
+                        </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/egypte" class="icon-link"> 
+                            <img src="{{ dossier_images }}/egypte/egypte-3.jpg" class="egypte" alt="trek egypte">
+                        </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/egypte" class="icon-link"> 
+                            <img src="{{ dossier_images }}/egypte/egypte-4.jpg" class="egypte" alt="trek egypte">
+                        </a>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Précédent</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Suivant</span>
+            </a>
+        </div>
+    </div>
+  
+
+    <!---*****************************************Jordanie**************************************************************************-->
+    <div class="" id="gauche">
+
+        <h2>Jordanie</h2>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a href="/jordanie" class="icon-link">
+                            <img src="{{ dossier_images }}/jordanie/jordanie-1.jpg" class="jordanie" alt="trek jordanie">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="/jordanie" class="icon-link">
+                            <img src="{{ dossier_images }}/jordanie/jordanie-2.jpg" class="jordanie" alt="trek jordanie">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="/jordanie" class="icon-link">
+                            <img src="{{ dossier_images }}/jordanie/jordanie-3.jpg" class="jordanie" alt="trek jordanie">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="/jordanie" class="icon-link">
+                            <img src="{{ dossier_images }}/jordanie/jordanie-4.jpg" class="jordanie" alt="trek jordanie">
+                        </a>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Précédent</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Suivant</span>
+                </a>
+            </div>
+
+        <!--*********************************************Ethiopie**********************************************************************-->
+
+        <h2>Ethiopie</h2>
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a href="/ethiopie" class="icon-link">
+                            <img src="{{ dossier_images }}/ethiopie/ethiopie-1.jpg" class="ethiopie" alt="trek ethiopie">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="/ethiopie" class="icon-link">
+                            <img src="{{ dossier_images }}/ethiopie/ethiopie-2.jpg" class="ethiopie" alt="trek ethiopie">
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="/ethiopie" class="icon-link">
+                            <img src="{{ dossier_images }}/ethiopie/ethiopie-3.jpg" class="ethiopie" alt="trek ethiopie">
+                        </a>
+                    </div>
+                    
+                <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Précédent</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Suivant</span>
+                </a>
+                </div>
+            </class>
+        </div>
+    </div>
 </div>
+
+
 {% endblock %}

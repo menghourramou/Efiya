@@ -3,4 +3,11 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     exception_controller: null
+
+    # ajout Bootstrap
     form_themes: ["bootstrap_4_layout.html.twig"]
+
+    # creation d'une globale pour la gestion des images
+    globals:
+        dossier_images: "/img/"
+

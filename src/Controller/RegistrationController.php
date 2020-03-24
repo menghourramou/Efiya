@@ -20,12 +20,16 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, EMI $em, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, RegistrationFormTypeAuthenticator $authenticator): Response
     {
+        //création d'un objet user(création d'un nouvel utilisateur)
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
 
+        //création d'un formulaire à partir de la classe UserType:remplace les setPropriete()
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);//faire les requètes en BDD
+
+        //Si le formulaire est envoyé et complet (avec toutes les informations)
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+            // encode le mot de passe(sinon il est enrengistré non crypté)
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
@@ -34,12 +38,12 @@ class RegistrationController extends AbstractController
             );
 
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $entityManager->persist($user);//recupère toutes les informations et prepare la requète "sql"
+            $entityManager->flush();//execute la requète ( envoie les informations en BDD)
 
-            // do anything else you need here, like send an email
-
-            return $guardHandler->authenticateUserAndHandleSuccess(
+            
+             //retourne les informations vers la vue (toujours dans le 'if')
+            return $guardHandler->authenticateUserAndHandleSuccess( 
                 $user,
                 $request,
                 $authenticator,
@@ -49,6 +53,7 @@ class RegistrationController extends AbstractController
             
         }
 
+        //retourne les informations vers la vue
         return $this->render('registration/formulaire-user.html.twig', [
             'registrationForm' => $form->createView(),
         ]);

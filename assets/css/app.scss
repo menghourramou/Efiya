@@ -1,6 +1,377 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "~bootstrap/scss/bootstrap";
 
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
 body {
-    background-color: lightgray;
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+//****************************************FIN DU RESET***************************************************************************
+
+//****************************************COMMUN*******************************************************************************
+
+
+nav{
+    background: linear-gradient(#A85D31, rgb(248, 191, 111));;
+    height: 9rem;
+    font-family: 'Itim', cursive;
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start; 
+    width: 100%;
+  
+}  
+
+img.logo{
+    height: 8rem;
+}
+
+body{
+    background-color: rgb(245, 247, 255);
+ 
+}
+    
+#corps{
+    background-color: white;  
+    text-align: center;
+    margin-left:5rem;
+    margin-right: 5rem;
+}  
+
+footer{
+    background: linear-gradient(rgb(248, 191, 111), #A85D31);
+}  
+
+//***********************************************************ECRITURES ET LIENS****************************//
+
+nav a{
+    margin: 2rem;
+    font-size:1.5rem;
+    color: honeydew;
+    font-family: 'Bad Script', cursive;
+    padding: 10px;
+}
+
+ nav a:hover {
+    color: #2B71B2;
+    text-decoration: none;
+    font-family: 'Satisfy', cursive;
+    font-size:1.5rem;
+  }
+
+h1 {
+    color: black;
+    font-family: 'Satisfy', cursive;
+    font-size: 6rem; 
+    margin-top: 6rem;
+}
+
+h2 {
+    font-size: 3em;
+    font-family: 'Satisfy', cursive;
+    color: rgb(248, 191, 111); 
+    display: inline-flex;
+}
+
+h3{
+    color: rgb(248, 191, 111);
+    font-family: 'Satisfy', cursive;
+    font-size: 3rem; 
+    font-weight: bold;
+    margin-top: 6rem;
+}
+
+h4{
+    color:#2B71B2; 
+    font-family: 'Satisfy', cursive;
+    font-size: 2.5rem; 
+    font-weight: bold;
+    margin-top: 3.5rem;
+}
+
+h5{
+        color:#2B71B2; 
+        font-family: 'Satisfy', cursive;
+        font-size: 6rem; 
+        font-weight: bold;
+        margin-top: 4rem;
+}
+
+h6{
+    margin-top: 5rem;
+    font-size: 5em;
+    font-family: 'Satisfy', cursive;
+    color:#2B71B2; 
+    font-weight:bold ;
+}
+
+p{
+    font-family: 'Parisienne', cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: start;
+}
+
+u{
+    font-family: 'Mukta', sans-serif;
+
+}
+
+li{
+    font-family: 'Parisienne', cursive;
+    font-size: 2rem;
+    color: black;
+    text-align: start;
+    line-height :3rem;
+    display: inline-block;
+}
+//***************************************************footer************************************************
+footer p{
+    padding-top: 0.5rem;
+    box-sizing: border-box;
+    margin-left : 1.5rem;
+    color:bisque;
+}
+.cgv{
+    padding-top: 1rem;
+    box-sizing: border-box;
+    margin-left : 1.5rem;
+    color:bisque;
+    font-family: 'Satisfy', cursive;
+    font-size : 1.5rem;
+}
+
+.rs{
+    margin-right : 1.5rem;
+    padding-bottom: 0.5rem;
+    box-sizing: border-box;
+}
+.rs i{
+    margin-left : 1rem;
+    color:bisque;
+}
+.rs i:hover{
+    color:#2B71B2;
+}
+.coordones{
+    margin-left: 70rem;
+}
+.coordones p{
+    font-weight: bold;
+    color:white;
+}
+//****************************************************************************FORMULAIRE D'INSCRIPTION***************************************************************************
+
+form{
+    padding: 4rem;
+    text-decoration: none;
+}
+
+form a{
+    padding: 2rem;
+    font-size: 2rem;
+    color: rgb(243, 176, 95);
+    text-align: end;
+    font-family: 'Satisfy', cursive;
+}
+
+form a :hover{
+    font-family: 'Satisfy', cursive;
+    color:#2B71B2; 
+    text-decoration: none;
+}
+
+
+
+.form-control {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: calc(1.0em + .70rem + 1px);
+    padding: .375rem .75rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 60rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    font-family: 'Satisfy', cursive;
+}
+
+button {
+    border-radius: 2rem;
+    font-family: 'Mukta', sans-serif;
+    background-color: #2B71B2;
+    color: bisque;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+button:hover {
+    border-radius: 2rem;
+    font-family: 'Mukta', sans-serif;
+    background: linear-gradient(#A85D31, rgb(248, 191, 111));
+    color: #2B71B2;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+//**********************************************************************************************ACCUEIL*********************************************************************************************************************//
+
+img.sahara{
+    width: 30rem;
+    height:30rem;
+    padding: 4rem;
+    
+}
+
+img.egypte{
+    width: 30rem;
+    height:30rem;
+    padding: 4rem;
+   
+}
+
+img.ethiopie{
+    width: 30rem;
+    height:30rem;
+    padding: 4rem;
+    
+}
+
+img.jordanie{
+    width: 30rem;
+    height:30rem;
+    padding: 4rem;
+}
+
+/**div qui contient le caroussel**/
+#carroussel{
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+   
+}
+
+#gauche{
+    margin-top:4rem;
+    color:#2B71B2; 
+
+    
+}
+
+#droit{
+    margin-top:4rem;
+
+}
+// **** Responsive Accueil
+@media screen and (min-width: 768px){
+    #carroussel{
+        margin-top: 2rem;
+        display: block;
+        justify-content: center;   
+    }
+}
+@media screen and (min-width: 992px){
+    #carroussel{
+        margin-top: 3rem;
+        display:block;
+        justify-content: center;
+       
+    }
+}
+@media screen and (min-width: 1200px){
+    #carroussel{
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+       
+    }
+}
+
+/******************modification des parametre par defaut du caroussel*********************************/
+.carousel-item {
+    position: relative;
+    display: none;
+    float: left; 
+    backface-visibility: hidden;
+    transition: transform .6s ease-in-out;
+}
+
+
+//*****************************************************************************************VUES DES VOYAGES************************************************************************************************//
+
+img.caroussel{
+    margin-top:4rem;
+    height: 30rem;
+    width: 70rem;
+
+}
+
+
+//*****************************************************************************************VUES DES LISTES************************************************************************************************//
+
+table{
+    border: 3px solid black;
+    margin-top : 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Satisfy', cursive;
+}
+tr{
+    border: 2px solid black;
+}
+th, td{
+    border: 2px solid black;
+    text-align: center;
 }

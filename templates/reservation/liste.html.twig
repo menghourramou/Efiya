@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Liste des reservations {% endblock %}
+
+{% block body %}
+    
+    <table class="table table-bordered">
+        <tr>
+            <th colspan=7 class="text-center">Nombre de reservations : {{ reservations|length }}</th>
+        </tr>
+        <tr>
+            <th>ID</th><th>Voyage</th><th>Statut</th><th>Date de départ</th><th>Formule</th><th>Prix</th><th colspan=2 class="text-center">Client</th><th colspan=2 class="text-center">Actions</th>
+        <tr>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.voyage.destination }}</td>
+                <td>{{ reservation.statut }}</td>
+                <td>{{ reservation.dateDepart|date("d/m/Y") }}</td>
+                <td>{{ reservation.formule.formule }}</td>
+                <td>{{ reservation.prix }}</td>
+                <td>{{ reservation.user.nom|upper }}</td>
+                <td>{{ reservation.user.prenom }}</td>
+                <td><a href="{{path("reservation_update", {id: reservation.id})}}" class="fa fa-pen"></a></td>
+                <td><a href="{{path("reservation_delete" , {id: reservation.id})}}" class="fa fa-trash"></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

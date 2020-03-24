@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<form method="POST">
+        <label>Nom</label><br>
+        <input type="text" name="nom" value="{{ user is defined ? user.nom : "" }}"><br><br>
+    
+        <label>Prenom</label><br>
+        <input name="prenom" value="{{ user is defined ? user.prenom : "" }}"><br><br>
+
+        <label>Email</label><br>
+        <input name="email" value="{{ user is defined ? user.email : "" }}"><br><br>
+
+        <label>Date de naissance</label><br>
+        <input name="date_naissance" value="{{ user is defined ? user.dateNaissance|date("d/m/Y") : "" }}"><br><br>
+
+        <label>Nationalité</label><br>
+        <input name="nationalite" value="{{ user is defined ? user.nationalite : "" }}"><br><br>
+    
+
+    <button type="submit"> {{ mode is defined ? mode|capitalize : "Ajouter" }}</button>
+    
+</form>
+{% endblock %}

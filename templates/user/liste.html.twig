@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Liste des clients {% endblock %}
+
+{% block body %}
+    
+    <table class="table table-bordered">
+        <tr>
+            <th colspan=7 class="text-center">Nombre de clients : {{ users|length }}</th>
+        </tr>
+        <tr>
+            <th>Nom</th><th>Prenom</th><th>Date de naissance</th><th>Email</th><th>Nationalité</th><th colspan=2>Actions</th>
+        <tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.nom|upper }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.dateNaissance|date("d/m/Y") }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.nationalite }}</td>
+                <td><a href="{{ path("user_update", {id: user.id })}}" class="fa fa-pen"></a></td>
+                <td><a href="{{ path("user_delete", {id: user.id })}}" class="fa fa-trash"></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
